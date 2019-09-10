@@ -44,7 +44,7 @@ removeIngredientHandler = (type) => {
   }
   updatedIngredients[type] = updatedCount
   // Price update
-  const priceDeduction = INGREDIENT_PRICES
+  const priceDeduction = INGREDIENT_PRICES[type]
   const oldPrice = this.state.totalPrice
   const newPrice = oldPrice - priceDeduction
   this.setState({ totalPrice: newPrice, ingredients: updatedIngredients })
@@ -63,7 +63,8 @@ removeIngredientHandler = (type) => {
         <BuildControls 
           ingredientsAdder={this.addIngredientHandler} 
           ingredientsRemover={this.removeIngredientHandler}
-          disabled={disabledInfo} />
+          disabled={disabledInfo}
+          price={this.state.totalPrice} />
       </Aux>
     )
   }

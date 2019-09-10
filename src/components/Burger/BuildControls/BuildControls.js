@@ -12,9 +12,10 @@ const controls = [
 
 const BuildControls = (props) => (
   <div className={classes.BuildControls}>
+    <p>Current Price: <strong>{props.price}</strong></p>
     {controls.map((ctrl, i) => {
       return <BuildControl
-        key={i} 
+        key={i}
         label={ctrl.label}
         moreClicked={() => props.ingredientsAdder(ctrl.type)}
         lessClicked={() => props.ingredientsRemover(ctrl.type)}
