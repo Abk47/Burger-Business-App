@@ -93,6 +93,7 @@ proceedPayment = () => {
           ingredients={this.state.ingredients}
           cancel={this.purchaseCancelHandler}
           order={this.proceedPayment}
+          price={this.state.totalPrice}
            />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
