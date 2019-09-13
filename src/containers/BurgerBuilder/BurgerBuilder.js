@@ -5,6 +5,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders'
+import Swal from 'sweetalert2'
 
 const INGREDIENT_PRICES = {
   salad: 500,
@@ -81,17 +82,23 @@ proceedPayment = async () => {
       ingredients: this.state.ingredients,
       price: this.state.totalPrice,
       customer: {
-        name: 'Lucas Joe',
+        name: 'Pius H Dwayne',
         address: {
-          city: 'Dar es Salaam',
-          country: 'Tanzania',
+          city: 'Nairobi',
+          country: 'Kenya',
         },
-        email: 'user@test.com',
+        email: 'email@test.com',
       }
     }
     try{
     const response = await axios.post('/orders.json', order)
     console.log(response)
+    // Sweet alert notification
+    Swal.fire(
+      'Order placed!',
+      'Your burger will soon be delivered!',
+      'success'
+    )
   } catch (error) {
     console.log(error)
   }
