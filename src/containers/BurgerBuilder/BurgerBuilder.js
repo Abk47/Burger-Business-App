@@ -4,6 +4,7 @@ import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import axios from '../../axios-orders'
 
 const INGREDIENT_PRICES = {
   salad: 500,
@@ -75,8 +76,25 @@ purchaseCancelHandler = () => {
   this.setState({ purchasing: false })
 }
 
-proceedPayment = () => {
-  alert('Proceeding to Payment')
+proceedPayment = async () => {
+    const order = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice,
+      customer: {
+        name: 'Lucas Joe',
+        address: {
+          city: 'Dar es Salaam',
+          country: 'Tanzania',
+        },
+        email: 'user@test.com',
+      }
+    }
+    try{
+    const response = await axios.post('/orders.json', order)
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
   render () {
