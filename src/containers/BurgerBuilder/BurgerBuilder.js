@@ -21,7 +21,6 @@ class BurgerBuilder extends Component {
     totalPrice: 5000,
     purchasable: false,
     purchasing: false,
-    loading: false,
     error: false
   }
 
@@ -128,10 +127,6 @@ proceedPayment = async () => {
       cancel={this.purchaseCancelHandler}
       order={this.proceedPayment}
       price={this.state.totalPrice} />
-      }
-
-      if(this.state.loading){
-        orderSummary = <Spinner />
       }
     
     return (
