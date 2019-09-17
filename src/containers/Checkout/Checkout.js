@@ -13,12 +13,12 @@ class Checkout extends Component {
     componentWillMount(){
         const query = new URLSearchParams(this.props.location.search)
         const ingredients = {}
-        let price = null
-        for( let params of query.entries()){
-            if(params[0] === 'price'){
-                price = params[1]
+        let price = 0
+        for( let param of query.entries()){
+            if(param[0] === 'price'){
+                price = param[1]
             } else{
-                ingredients[params[0]] = +params[1]
+                ingredients[param[0]] = +param[1]
             }
         }
         this.setState({ ingredients: ingredients, totalPrice: price })
