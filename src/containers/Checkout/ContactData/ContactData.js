@@ -51,12 +51,16 @@ render() {
     <Button btnType='Success' clicked={this.orderHandler}>ORDER</Button>
   </form>
   )
+
+  let displayText = 'Enter your contact details here'
+
   if(this.state.loading){
     form = <Spinner />
+    displayText = 'Placing your order'
   }
     return (
          <div className={classes.ContactData}>
-             <h4>Enter your contact details here</h4>
+             <h4>{displayText}</h4>
              {form}
          </div>
     )
