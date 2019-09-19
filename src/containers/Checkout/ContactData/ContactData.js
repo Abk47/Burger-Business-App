@@ -52,8 +52,9 @@ class ContactData extends Component {
             },
             value: ''
         },
-        loading: false
-    }
+      },
+      loading: false,
+  }
 
     orderHandler = async (e) => {
         e.preventDefault()
@@ -72,12 +73,22 @@ class ContactData extends Component {
     }
 
 render() {
+  const formElementsArray = []
+  for(let key in this.state.orderForm){
+    formElementsArray.push({
+      id: key,
+      config: this.state.orderForm[key]
+    })
+  }
   let form = (
   <form>
-    <Input inputtype="input" type='text' name='name' placeholder='Full Name' />
-    <Input inputtype="input" type='email' name='email' placeholder='Email address' />
-    <Input inputtype="input" type='text' name='street' placeholder='Street Address' />
-    <Input inputtype="input" type='text' name='phone' placeholder='Mobile Number' />
+    {formElementsArray.map(formElement => (
+      <Input 
+        key={formElement.id} 
+        elementConfig={formElement.config.elementConfig} 
+        elementType={formElement.config.elementType} 
+        value={formElement.config.value} />      
+    ))}
     <Button btnType='Success' clicked={this.orderHandler}>ORDER</Button>
   </form>
   )
