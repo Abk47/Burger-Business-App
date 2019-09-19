@@ -72,6 +72,19 @@ class ContactData extends Component {
         }
     }
 
+    inputChangedHandler = (e, inputIdentifier) => {
+      const updatedOrderForm = {
+        ...this.state.orderForm
+      } 
+      // You have to clone a deeply nested objected to get the OG properties
+      const updatedFormElement = {
+        ...updatedOrderForm[inputIdentifier] 
+      }
+      updatedFormElement.value = e.target.value
+      updatedOrderForm[inputIdentifier] = updatedFormElement
+      this.setState({ orderForm: updatedOrderForm })
+    }
+
 render() {
   const formElementsArray = []
   for(let key in this.state.orderForm){
@@ -85,9 +98,10 @@ render() {
     {formElementsArray.map(formElement => (
       <Input 
         key={formElement.id} 
-        elementConfig={formElement.config.elementConfig} 
-        elementType={formElement.config.elementType} 
-        value={formElement.config.value} />      
+        elementConfig={ formElement.config.elementConfig } 
+        elementType={ formElement.config.elementType } 
+        value={ formElement.config.value }
+        changed={ (e) => this.inputChangedHandler(e, formElement.id) } />      
     ))}
     <Button btnType='Success' clicked={this.orderHandler}>ORDER</Button>
   </form>
