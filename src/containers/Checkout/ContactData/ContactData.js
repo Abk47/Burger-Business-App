@@ -45,10 +45,10 @@ class ContactData extends Component {
           deliveryMethod: {
             elementType: 'select',
             elementConfig:{
-             options: [{
-               value: 'fastest', displayValue: 'Fastest',
-               value: 'standard', displayValue: 'Standard',
-             }]
+             options: [
+               { value: 'fastest', displayValue: 'Fastest Delivery' },
+               { value: 'standard', displayValue: 'Standard Delivery' }
+            ]
             },
             value: ''
         },
