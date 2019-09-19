@@ -18,9 +18,11 @@
     padding: 6px 10px;
     display: block;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .InputElement:focus{
     outline: none;
-    background-color: #ccc;
+    background-color: rgb(253, 251, 251);
+    border-color: rgb(141, 36, 36);
 }
